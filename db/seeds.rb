@@ -13,8 +13,8 @@ csv = CSV.parse(csv_text.scrub, headers: true)
 csv.each do |row|
   t = Restaurant.new
   t.name = row[0]
-  t.accepts10bis = row['10bis']
-  t.maxDeliveryTime = row['maxDT']
+  t.accepts_10bis = row['10bis']
+  t.max_delivery_time = row['maxDT']
   t.cuisine = row['Cuisine']
   t.address = row['Address']
   t.save
