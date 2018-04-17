@@ -12,7 +12,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  reviews_count     :integer          default(0)
-#  reviews_sum       :decimal(8, 2)    default(0.0)
+#  reviews_sum       :integer          default(0)
 #
 
 class Restaurant < ApplicationRecord

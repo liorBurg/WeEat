@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417133019) do
+ActiveRecord::Schema.define(version: 20180417194518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180417133019) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
+    t.integer "restaurant_id", null: false
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
   end
 

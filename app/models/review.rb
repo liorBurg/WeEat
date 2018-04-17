@@ -8,9 +8,20 @@
 #  comment       :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  restaurant_id :integer
+#  restaurant_id :integer          not null
 #
 
 class Review < ApplicationRecord
   belongs_to :restaurant
+  after_create :update_event_rating
+
+  private
+
+  def update_event_rating
+    new_rating = (restaurant.reviews_sum + rating) / (restaurant.reviews_count + 1)
+    restaurant.rating = new_rating.round
+    restaurant.reviews_count += 1
+    restaurant.reviews_sum += rating
+    restaurant.save
+  end
 end
