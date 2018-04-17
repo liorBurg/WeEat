@@ -4,7 +4,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :cuisine
       t.integer :rating
-      t.boolean :accepts10bis
+      t.boolean :accepts_10bis
       t.string :address
       t.integer :maxDeliveryTime
 
