@@ -14,6 +14,7 @@
 class Review < ApplicationRecord
   belongs_to :restaurant
   after_create :update_event_rating
+  validates_presence_of :rating, :restaurant
 
   private
 
