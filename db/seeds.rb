@@ -23,7 +23,6 @@ end
 
 puts "There are now #{Restaurant.count} rows in the restaurants table"
 
-
 Restaurant.all.each do |restaurant|
   rev_count = rand(1..4)
   rev_count.times do
@@ -33,5 +32,3 @@ Restaurant.all.each do |restaurant|
 end
 
 puts "There are now #{Review.count} rows in the reviews table"
-
-

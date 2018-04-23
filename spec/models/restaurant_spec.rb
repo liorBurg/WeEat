@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Restaurant, type: :model do
-  subject { described_class.new(name: 'Burgerim', cuisine: 'Burger', address: 'some st. 22 Tel-Aviv')}
+  subject { described_class.new(name: 'Burgerim', cuisine: 'Burger', address: 'some st. 22 Tel-Aviv') }
   describe 'validations' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
@@ -21,7 +21,6 @@ RSpec.describe Restaurant, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:reviews)}
+    it { should have_many(:reviews) }
   end
-
 end
