@@ -6,13 +6,8 @@ RSpec.describe Review, type: :model do
   let(:review2) { Review.new(rating: 1, restaurant: rest) }
 
   describe 'validations' do
-    it 'is valid with valid attributes' do
-      expect(review1).to be_valid
-    end
-    it 'is not valid without a rating' do
-      review1.rating = nil
-      expect(review1).to_not be_valid
-    end
+    it { is_expected.to be_valid }
+    it { is_expected.to validate_presence_of :rating }
   end
 
   describe 'associations' do
