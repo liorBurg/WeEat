@@ -8,7 +8,6 @@ import { TextValidator, ValidatorForm, SelectValidator } from 'react-material-ui
 import PropTypes from 'prop-types';
 import { addRestaurant } from '../utils/api';
 
-
 class AddNewRestaurant extends Component {
   constructor(props) {
     super(props);
@@ -85,10 +84,7 @@ class AddNewRestaurant extends Component {
   }
 
   render() {
-    const cuisines = [];
-    Object.keys(this.props.cuisines).forEach(function (key) {
-      cuisines.push(key);
-    });
+    const cuisines = this.props.cuisines;
     const { formData } = this.state;
     return (
       <div>
@@ -173,7 +169,7 @@ class AddNewRestaurant extends Component {
 }
 
 AddNewRestaurant.propTypes = {
-  cuisines: PropTypes.object,
+  cuisines: PropTypes.array,
   updateRests: PropTypes.func,
 };
 

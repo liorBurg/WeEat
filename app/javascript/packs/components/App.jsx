@@ -3,6 +3,7 @@ import Banner from './Banner';
 import RestaurantsList from './RestaurantsList';
 import Map from './Map';
 import { getRestaurants } from '../utils/api';
+import { filterRests } from '../utils/filters';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const cuisines = {
@@ -36,19 +37,20 @@ class App extends Component {
       }))
       .catch(err => console.log(err));
   }
-  filterRests(value) {
+  filterRests(filterType, value) {
     let updatedRests = this.state.rests;
-    updatedRests = updatedRests.filter(function (rest) {
-      return rest.name.toLowerCase().search(value.toLowerCase()) !== -1;
-    });
+    updatedRests = filterRests(updatedRests, filterType, value);
     this.setState({ filteredRests: updatedRests });
   }
-
   render() {
     return (
       <MuiThemeProvider>
         <div>
-          <Banner filterRests={this.filterRests} cuisines={cuisines} updateRests={this.updateRests}/>
+          <Banner
+            filterRests={this.filterRests}
+            cuisines={cuisines}
+            updateRests={this.updateRests}
+          />
           <div className="restaurants-container">
             <RestaurantsList rests={this.state.filteredRests} cuisines={cuisines}/>
             <Map />

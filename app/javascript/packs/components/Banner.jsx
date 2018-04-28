@@ -15,12 +15,16 @@ class Banner extends Component {
   handleChange(event) {
     event.preventDefault();
     this.setState({ searchValue: event.target.value });
-    this.props.filterRests(event.target.value);
+    this.props.filterRests("search", event.target.value);
   }
-
   render() {
-    const cuisines = this.props.cuisines;
+    const cuisines = [];
+    Object.keys(this.props.cuisines).forEach(function (key) {
+      cuisines.push(key);
+    });
+    cuisines.sort();
     const updateRests = this.props.updateRests;
+    const filterRests = this.props.filterRests;
     return (
       <div className="banner">
         <div className="header-wrapper">
@@ -35,7 +39,7 @@ class Banner extends Component {
             />
           </div>
         </div>
-        <FilterBar />
+        <FilterBar cuisines={cuisines} filterRests={filterRests}/>
       </div>
     );
   }
