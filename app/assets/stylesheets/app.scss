@@ -13,44 +13,45 @@ body {
   asset_url('efcuisines-regular-webfont.svg#webfont') format('svg');
 }
 
-//.banner {
-//  height: 300px;
-//  background: url("FoodBanner.jpg") no-repeat center;
-//  background-size: cover;
-//  position: relative;
-//  h1 {
-//    text-align: center;
-//    position: absolute;
-//    top: 10%;
-//    left: 20%;
-//    color: white;
-//    font-size: 70px;
-//  }
-//  input {
-//    position: absolute;
-//    top: 60%;
-//    left: 15%;
-//    color: white;
-//    font-size: 20px;
-//    width: 30px;
-//  }
-//}
-
 .banner {
-  background: url("FoodBanner.jpg") no-repeat center;
+  background: url("banner_background.jpg") no-repeat center;
   background-size: cover;
-  height: 420px;
+  height: 350px;
   display: flex;
   flex-direction: column;
 }
-
-.header {
-  height: 75%;
+.header-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-right: 35%;
+  height: 75%;
+}
+
+.add-restaurant {
+  font-family: 'ef_cuisinesregular', sans-serif;
+  font-size: 4em;
+  margin-right: 1em;
+  margin-top: 1em;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.action-buttons {
+  margin-top: 2em;
+  float: right;
+}
+
+.slider {
+  color: black;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5%;
   h1 {
     color: white;
     font-size: 70px;
@@ -60,7 +61,7 @@ body {
     font-size: 25px;
     color: black;
     line-height: 35px;
-    width: 30%;
+    width: 20em;
     padding-left: 10px;
   }
 }
@@ -74,17 +75,18 @@ body {
 .restaurants-container {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  //align-items: stretch;
 }
 
 .restaurants-list {
-  width: 25%;
+  width: 30%;
   display: flex;
   flex-direction: column;
 }
 
 .restaurant-item {
   border-bottom: 2px solid #E8E8E8;
+  border-right: 2px solid #E8E8E8;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -142,10 +144,12 @@ body {
   background: url("star.png") no-repeat;
   height: 16px;
   width: 16px;
+  margin-left: 5px;
 }
 
 .map {
   border: 3px solid gray;
-  width: 75%;
+  width: 70%;
+  //align-self: flex-start;
 }
 

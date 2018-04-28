@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const cuisines = {
-  American: 109,
-  Hawaiian: 79,
-  Sushi: 73,
-  Asian: 71,
-  Japanese: 74,
-  Seafood: 107,
-  'Healthy Food': 36,
-};
-
 function Rating(props) {
   let stars = [];
   for (let i = 0; i < props.stars; i = i + 1) {
@@ -30,6 +20,7 @@ Rating.propTypes = {
 class RestaurantItem extends Component {
   render() {
     const restaurant = this.props.rest;
+    const cuisines = this.props.cuisines;
     return (
       <div className="restaurant-item">
         <div className="restaurants-details">
@@ -56,6 +47,7 @@ class RestaurantItem extends Component {
 
 RestaurantItem.propTypes = {
   rest: PropTypes.object,
+  cuisines: PropTypes.object,
 };
 
 export default RestaurantItem;

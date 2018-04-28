@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[show edit update destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /restaurants
   # GET /restaurants.json

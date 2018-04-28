@@ -3,6 +3,17 @@ import Banner from './Banner';
 import RestaurantsList from './RestaurantsList';
 import Map from './Map';
 import { getRestaurants } from '../utils/api';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+const cuisines = {
+  American: 109,
+  Hawaiian: 79,
+  Sushi: 73,
+  Asian: 71,
+  Japanese: 74,
+  Seafood: 107,
+  'Healthy Food': 36,
+};
 
 class App extends Component {
   constructor(props) {
@@ -35,18 +46,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Banner filterRests={this.filterRests}/>
-        <div className="restaurants-container">
-          <RestaurantsList rests={this.state.filteredRests}/>
-          <Map />
+      <MuiThemeProvider>
+        <div>
+          <Banner filterRests={this.filterRests} cuisines={cuisines} updateRests={this.updateRests}/>
+          <div className="restaurants-container">
+            <RestaurantsList rests={this.state.filteredRests} cuisines={cuisines}/>
+            <Map />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
-
-//        {this.state.rests.length > 0 ? console.log(this.state.rests) : console.log('empty')}
-
 
 export default App;

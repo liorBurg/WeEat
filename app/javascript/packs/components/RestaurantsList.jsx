@@ -5,10 +5,11 @@ import RestaurantItem from './RestaurantItem';
 class RestaurantsList extends Component {
   render(){
     const restaurants = this.props.rests;
+    const cuisines = this.props.cuisines;
     return (
       <div className="restaurants-list">
         {restaurants.map(function (rest) {
-          return <RestaurantItem key={rest.id} rest={rest}/>;
+          return <RestaurantItem key={rest.id} rest={rest} cuisines={cuisines}/>;
         })}
       </div>
     );
@@ -17,6 +18,7 @@ class RestaurantsList extends Component {
 
 RestaurantsList.propTypes = {
   rests: PropTypes.array,
+  cuisines: PropTypes.object,
 };
 
 export default RestaurantsList;

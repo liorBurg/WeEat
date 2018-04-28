@@ -4,4 +4,7 @@ function getRestaurants() {
   return axios.get('/restaurants');
 }
 
-export { getRestaurants };
+function addRestaurant(rest) {
+  return axios.post('/restaurants', rest);
+}
+export { getRestaurants, addRestaurant };

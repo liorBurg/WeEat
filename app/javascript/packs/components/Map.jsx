@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Map extends Component {
-  render(){
+  render() {
     return (
       <div className="map">Map</div>
     );
