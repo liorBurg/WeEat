@@ -23,16 +23,9 @@ class AddNewRestaurant extends Component {
         accepts_10bis: false,
       },
     };
-
-    this.handleClose = this.handleClose.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTextChange = this.handleTextChange.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleSliderChange = this.handleSliderChange.bind(this);
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-    this.clearState = this.clearState.bind(this);
   }
-  clearState() {
+
+  clearState = () => {
     this.setState(
       {
         formData: {
@@ -43,17 +36,18 @@ class AddNewRestaurant extends Component {
           accepts_10bis: false,
         },
       });
-  }
+  };
+
   handleOpen = () => {
     this.setState({ openDialog: true });
   };
 
-  handleClose() {
+  handleClose = () => {
     this.setState({ openDialog: false });
     this.clearState();
-  }
+  };
 
-  handleSubmit() {
+  handleSubmit = () => {
     addRestaurant(this.state.formData)
       .then(() => {
         this.props.updateRests();
@@ -61,31 +55,31 @@ class AddNewRestaurant extends Component {
         this.clearState();
       })
       .catch(err => console.log(err));
-  }
+  };
 
-  handleTextChange(event) {
+  handleTextChange = (event) => {
     const { formData } = this.state;
     formData[event.target.name] = event.target.value;
     this.setState({ formData });
-  }
+  };
 
-  handleCheckboxChange() {
-    const formData = this.state.formData;
+  handleCheckboxChange = () => {
+    const { formData } = this.state;
     formData.accepts_10bis = !formData.accepts_10bis;
     this.setState({ formData: formData });
-  }
+  };
 
-  handleSelectChange(event, index, value) {
-    const formData = this.state.formData;
+  handleSelectChange = (event, index, value) => {
+    const { formData } = this.state;
     formData.cuisine = value;
     this.setState({ formData: formData });
-  }
+  };
 
-  handleSliderChange(event, value) {
-    const formData = this.state.formData;
+  handleSliderChange = (event, value) => {
+    const { formData } = this.state;
     formData.max_delivery_time = value;
     this.setState({ formData: formData });
-  }
+  };
 
   render() {
     const forkAndKnifeIcon = '+f';

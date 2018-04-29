@@ -23,25 +23,27 @@ class App extends Component {
       rests: [],
       filteredRests: [],
     };
-    this.updateRests = this.updateRests.bind(this);
-    this.filterRests = this.filterRests.bind(this);
   }
+
   componentDidMount() {
     this.updateRests();
   }
-  updateRests() {
+
+  updateRests = () => {
     getRestaurants()
       .then(res => this.setState({
         rests: res.data,
         filteredRests: res.data,
       }))
       .catch(err => console.log(err));
-  }
-  filterRests(filterType, value) {
+  };
+
+  filterRests = (filterType, value) => {
     let updatedRests = this.state.rests;
     updatedRests = filterRests(updatedRests, filterType, value);
     this.setState({ filteredRests: updatedRests });
-  }
+  };
+
   render() {
     return (
       <MuiThemeProvider>

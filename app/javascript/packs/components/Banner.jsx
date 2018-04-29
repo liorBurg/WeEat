@@ -10,13 +10,14 @@ class Banner extends Component {
       searchValue: '',
       openDialog: false,
     };
-    this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(event) {
+
+  handleChange = (event) => {
     event.preventDefault();
     this.setState({ searchValue: event.target.value });
-    this.props.filterRests("search", event.target.value);
-  }
+    this.props.filterRests('search', event.target.value);
+  };
+
   render() {
     const cuisines = [];
     Object.keys(this.props.cuisines).forEach(function (key) {

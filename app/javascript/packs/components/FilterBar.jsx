@@ -9,7 +9,7 @@ const styles = {
   customFont: {
     color: 'white',
   },
-  customSlider : {
+  customSlider: {
     width: 250,
     marginBottom: 0,
     marginTop: 0,
@@ -26,11 +26,9 @@ class MinimalRating extends Component {
       ratingStars: [false, false, false],
       rating: 0,
     };
-
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
-  handleCheckboxChange(type, index) {
+  handleCheckboxChange = (type, index) => {
     if (type === 'rating') {
       let stars = [false, false, false];
       let rating = 0;
@@ -42,11 +40,11 @@ class MinimalRating extends Component {
       this.setState({ ratingStars: stars, rating: rating });
       this.props.updateRating(rating);
     }
-  }
+  };
 
   render() {
     const { ratingStars } = this.state;
-    return(
+    return (
       <div className="minimal-rating">
         <span>{'Select Minimal Rating'}</span>
         <div className="stars">

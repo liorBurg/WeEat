@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RestaurantItem from './RestaurantItem';
 
 class RestaurantsList extends Component {
-  render(){
+  render() {
     const restaurants = this.props.rests;
     const cuisines = this.props.cuisines;
     return (
