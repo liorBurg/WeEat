@@ -22,6 +22,12 @@ class App extends Component {
     this.state = {
       rests: [],
       filteredRests: [],
+      filters: {
+        search: '',
+        cuisine: 'All',
+        rating: 0,
+        max_delivery_time: 120,
+      },
     };
   }
 
@@ -38,9 +44,12 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  filterRests = (filterType, value) => {
-    let updatedRests = this.state.rests;
-    updatedRests = filterRests(updatedRests, filterType, value);
+  filterRestaurants = (filterType, value) => {
+    const { filters, rests } = this.state;
+    filters[filterType] = value;
+    this.setState({ filters });
+    let updatedRests = rests;
+    updatedRests = filterRests(updatedRests, filters);
     this.setState({ filteredRests: updatedRests });
   };
 
@@ -49,7 +58,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <Banner
-            filterRests={this.filterRests}
+            filterRests={this.filterRestaurants}
             cuisines={cuisines}
             updateRests={this.updateRests}
           />
