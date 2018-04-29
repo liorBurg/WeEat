@@ -47,6 +47,11 @@ body {
   color: black;
 }
 
+.slider-container {
+  align-self: center;
+  color: white;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -72,7 +77,7 @@ body {
   opacity: 0.7;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .restaurants-container {
@@ -136,18 +141,40 @@ body {
   align-items: center;
 }
 
-.stars-container {
+.red-stars-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 20px 20px 0 0;
 }
 
-.star {
-  background: url("star.png") no-repeat;
+.red-star {
+  background: url("red-star.png") no-repeat;
   height: 16px;
   width: 16px;
   margin-left: 5px;
+}
+
+.big-red-star {
+  background: url("big-red-star.png") no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.star {
+  background: url("star.png") no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+}
+
+.minimal-rating {
+  align-self: center;
+  color: white;
 }
 
 .map {

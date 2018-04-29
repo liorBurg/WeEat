@@ -5,11 +5,11 @@ function Rating(props) {
   let stars = [];
   for (let i = 0; i < props.stars; i = i + 1) {
     stars.push(
-      <div key={i} className="star" />
+      <div key={i} className="red-star" />
     );
   }
   return (
-    <div className="stars-container">{stars}</div>
+    <div className="red-stars-container">{stars}</div>
   );
 }
 
@@ -40,8 +40,7 @@ class RestaurantItem extends Component {
           <Rating stars={restaurant.rating}/>
         </div>
       </div>
-
-  );
+    );
   }
 }
 
