@@ -20,6 +20,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .header-wrapper {
   display: flex;
   flex-direction: row;
@@ -83,7 +84,6 @@ body {
 .restaurants-container {
   display: flex;
   flex-direction: row;
-  //align-items: stretch;
 }
 
 .restaurants-list {
@@ -180,6 +180,5 @@ body {
 .map {
   border: 3px solid gray;
   width: 70%;
-  //align-self: flex-start;
 }
 

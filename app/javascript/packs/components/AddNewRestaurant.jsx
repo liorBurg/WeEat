@@ -8,6 +8,8 @@ import { TextValidator, ValidatorForm, SelectValidator } from 'react-material-ui
 import PropTypes from 'prop-types';
 import { addRestaurant } from '../utils/api';
 
+const maxDeliveryTime = 120;
+
 class AddNewRestaurant extends Component {
   constructor(props) {
     super(props);
@@ -17,13 +19,12 @@ class AddNewRestaurant extends Component {
         name: '',
         address: '',
         cuisine: '',
-        max_delivery_time: 120,
+        max_delivery_time: maxDeliveryTime,
         accepts_10bis: false,
       },
     };
 
     this.handleClose = this.handleClose.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
@@ -32,17 +33,20 @@ class AddNewRestaurant extends Component {
     this.clearState = this.clearState.bind(this);
   }
   clearState() {
-    const { formData } = this.state;
-    formData.name = '';
-    formData.address = '';
-    formData.cuisine = '';
-    formData.max_delivery_time = 120;
-    formData.accepts_10bis = false;
-    this.setState(formData);
+    this.setState(
+      {
+        formData: {
+          name: '',
+          address: '',
+          cuisine: '',
+          max_delivery_time: maxDeliveryTime,
+          accepts_10bis: false,
+        },
+      });
   }
-  handleOpen() {
+  handleOpen = () => {
     this.setState({ openDialog: true });
-  }
+  };
 
   handleClose() {
     this.setState({ openDialog: false });
@@ -84,11 +88,12 @@ class AddNewRestaurant extends Component {
   }
 
   render() {
-    const cuisines = this.props.cuisines;
+    const forkAndKnifeIcon = '+f';
+    const { cuisines } = this.props;
     const { formData } = this.state;
     return (
-      <div>
-        <button className="add-restaurant" onClick={this.handleOpen}>+f</button>
+      <div>forkAndKnifeIcon
+        <button className="add-restaurant" onClick={this.handleOpen}>{forkAndKnifeIcon}</button>
         <Dialog
           title="Add New Restaurant"
           modal={true}
@@ -136,7 +141,7 @@ class AddNewRestaurant extends Component {
             <Slider
               sliderStyle={ { width: 250, marginBottom: 10 } }
               min={0}
-              max={120}
+              max={maxDeliveryTime}
               step={15}
               value={formData.max_delivery_time}
               onChange={this.handleSliderChange}

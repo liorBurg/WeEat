@@ -36,10 +36,8 @@ class MinimalRating extends Component {
       let rating = 0;
       // when only one star is true - clear all stars
       if (!((index === 1) && this.state.ratingStars[0] && !this.state.ratingStars[1])) {
-        for (let i = 0; i < index; i = i + 1) {
-          stars[i] = true;
-          rating = index;
-        }
+        stars = stars.map((star, i) => i < index);
+        rating = index;
       }
       this.setState({ ratingStars: stars, rating: rating });
       this.props.updateRating(rating);
@@ -47,7 +45,7 @@ class MinimalRating extends Component {
   }
 
   render() {
-    const ratingStars = this.state.ratingStars;
+    const { ratingStars } = this.state;
     return(
       <div className="minimal-rating">
         <span>{'Select Minimal Rating'}</span>
@@ -106,6 +104,7 @@ class FilterBar extends Component {
     this.setState({ max_delivery_time: value });
     this.props.filterRests('max_delivery_time', value);
   }
+
   updateRating(rating) {
     this.props.filterRests('rating', rating);
   }

@@ -23,8 +23,7 @@ class Banner extends Component {
       cuisines.push(key);
     });
     cuisines.sort();
-    const updateRests = this.props.updateRests;
-    const filterRests = this.props.filterRests;
+    const { updateRests, filterRests } = this.props;
     return (
       <div className="banner">
         <div className="header-wrapper">
