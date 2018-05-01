@@ -10,7 +10,7 @@ function filterRests(rests, filters) {
       });
       return;
     case 'cuisine':
-      updatedRests = value === 'All' ? rests
+      updatedRests = value === 'All' ? updatedRests
         : updatedRests.filter(function (rest) {
           return rest.cuisine.toLowerCase() === value.toLowerCase();
         });

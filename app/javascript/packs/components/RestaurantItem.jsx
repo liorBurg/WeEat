@@ -1,21 +1,7 @@
 import React, { Component } from 'react';
+import Reviews from './Reviews';
+import Rating from './Rating';
 import PropTypes from 'prop-types';
-
-function Rating(props) {
-  let stars = [];
-  for (let i = 0; i < props.stars; i = i + 1) {
-    stars.push(
-      <div key={i} className="red-star" />
-    );
-  }
-  return (
-    <div className="red-stars-container">{stars}</div>
-  );
-}
-
-Rating.propTypes = {
-  stars: PropTypes.number,
-};
 
 class RestaurantItem extends Component {
   render() {
@@ -38,6 +24,7 @@ class RestaurantItem extends Component {
         </div>
         <div className="restaurant-reviews">
           <Rating stars={restaurant.rating}/>
+          <Reviews restId={restaurant.id.toString()}/>
         </div>
       </div>
     );

@@ -16,7 +16,7 @@ data_hash['restaurants'].each do |rest|
   r = Restaurant.new
   r.name = rest['restaurant']['name']
   r.cuisine = rest['restaurant']['cuisines']
-  r.address = rest['restaurant']['location']['address'] + ', ' + rest['restaurant']['location']['city']
+  r.address = rest['restaurant']['location']['address']
   r.save
 end
 
@@ -35,10 +35,10 @@ end
 puts "There are now #{Restaurant.count} rows in the restaurants table"
 
 Restaurant.all.each do |restaurant|
-  rev_count = rand(1..4)
+  rev_count = rand(1..6)
   rev_count.times do
     rand_rating = rand(1..3)
-    restaurant.reviews.create(reviewer_name: Faker::Name.name, rating: rand_rating, comment: Faker::Lorem.sentence)
+    restaurant.reviews.create(reviewer_name: Faker::Name.name, rating: rand_rating, comment: Faker::Lorem.paragraph)
   end
 end
 

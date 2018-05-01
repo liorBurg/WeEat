@@ -135,17 +135,10 @@ body {
   margin: 30px;
 }
 
-.restaurant-reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .red-stars-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 20px 20px 0 0;
 }
 
 .red-star {
@@ -175,6 +168,45 @@ body {
 .minimal-rating {
   align-self: center;
   color: white;
+}
+
+.restaurant-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  margin: 20px 20px 0 0;
+}
+.close-btn {
+  border: 0;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.reviews-btn {
+  border: 0;
+  background: url("review.png") no-repeat;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+.review-items {
+  margin: 1em;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    font-size: 15px;
+  }
+}
+
+.reviewer_name {
+  align-self: flex-end;
 }
 
 .map {
