@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Banner from './Banner';
 import RestaurantsList from './RestaurantsList';
 import Map from './Map';
-import { getRestaurants } from '../utils/api';
+import { getRestaurants, getGeocoding } from '../utils/api';
 import { filterRests } from '../utils/filters';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -20,14 +20,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mark: null,
       rests: [],
       filteredRests: [],
+      filters: {
+        search: '',
+        cuisine: 'All',
+        rating: 0,
+        max_delivery_time: 120,
+      },
     };
   }
 
   componentDidMount() {
     this.updateRests();
   }
+
+  updateCurrRestaurantMark = (add) => {
+    getGeocoding(add)
+      .then(res => this.setState({
+        mark: res.data.results[0].geometry.location,
+      }))
+      .catch(err => console.log(err));
+  };
 
   updateRests = () => {
     getRestaurants()
@@ -38,9 +53,12 @@ class App extends Component {
       .catch(err => console.log(err));
   };
 
-  filterRests = (filterType, value) => {
-    let updatedRests = this.state.rests;
-    updatedRests = filterRests(updatedRests, filterType, value);
+  filterRestaurants = (filterType, value) => {
+    const { filters, rests } = this.state;
+    filters[filterType] = value;
+    this.setState({ filters });
+    let updatedRests = rests;
+    updatedRests = filterRests(updatedRests, filters);
     this.setState({ filteredRests: updatedRests });
   };
 
@@ -49,13 +67,16 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <Banner
-            filterRests={this.filterRests}
+            filterRests={this.filterRestaurants}
             cuisines={cuisines}
             updateRests={this.updateRests}
           />
           <div className="restaurants-container">
-            <RestaurantsList rests={this.state.filteredRests} cuisines={cuisines}/>
-            <Map />
+            <RestaurantsList
+              rests={this.state.filteredRests}
+              cuisines={cuisines}
+              updateCurrRestaurantMark={this.updateCurrRestaurantMark}/>
+            <Map mark={this.state.mark}/>
           </div>
         </div>
       </MuiThemeProvider>

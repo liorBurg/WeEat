@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
+import Reviews from './Reviews';
+import Rating from './Rating';
 import PropTypes from 'prop-types';
 
-function Rating(props) {
-  let stars = [];
-  for (let i = 0; i < props.stars; i = i + 1) {
-    stars.push(
-      <div key={i} className="red-star" />
-    );
-  }
-  return (
-    <div className="red-stars-container">{stars}</div>
-  );
-}
-
-Rating.propTypes = {
-  stars: PropTypes.number,
-};
-
 class RestaurantItem extends Component {
+  onRestClick = () => {
+    this.props.updateCurrRestaurantMark(this.props.rest.address);
+  };
+
   render() {
     const restaurant = this.props.rest;
     const cuisines = this.props.cuisines;
     return (
-      <div className="restaurant-item">
+      <div className="restaurant-item" onClick={this.onRestClick}>
         <div className="restaurants-details">
           <div className="cuisine-icon">
             {String.fromCharCode(cuisines[restaurant.cuisine])}
@@ -38,6 +28,7 @@ class RestaurantItem extends Component {
         </div>
         <div className="restaurant-reviews">
           <Rating stars={restaurant.rating}/>
+          <Reviews restId={restaurant.id.toString()}/>
         </div>
       </div>
     );
@@ -47,6 +38,7 @@ class RestaurantItem extends Component {
 RestaurantItem.propTypes = {
   rest: PropTypes.object,
   cuisines: PropTypes.object,
+  updateCurrRestaurantMark: PropTypes.func,
 };
 
 export default RestaurantItem;

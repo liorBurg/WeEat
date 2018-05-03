@@ -84,12 +84,14 @@ body {
 .restaurants-container {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
 }
 
 .restaurants-list {
   width: 30%;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 .restaurant-item {
@@ -98,6 +100,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background-color: #E8E8E8;
+  }
 }
 
 .restaurants-details {
@@ -135,17 +141,10 @@ body {
   margin: 30px;
 }
 
-.restaurant-reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .red-stars-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 20px 20px 0 0;
 }
 
 .red-star {
@@ -177,8 +176,58 @@ body {
   color: white;
 }
 
+.restaurant-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  margin: 20px 20px 0 0;
+}
+.close-btn {
+  border: 0;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.reviews-btn {
+  border: 0;
+  background: url("review.png") no-repeat;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+.review-items {
+  margin: 1em;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    font-size: 15px;
+  }
+}
+
+.reviewer_name {
+  align-self: flex-end;
+}
+
 .map {
-  border: 3px solid gray;
   width: 70%;
+}
+
+.map-element {
+  height: inherit;
+}
+
+.map-container {
+  height: 70em;
+}
+
+.loading-map {
+  height: inherit;
 }
 

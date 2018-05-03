@@ -86,7 +86,7 @@ class AddNewRestaurant extends Component {
     const { cuisines } = this.props;
     const { formData } = this.state;
     return (
-      <div>forkAndKnifeIcon
+      <div>
         <button className="add-restaurant" onClick={this.handleOpen}>{forkAndKnifeIcon}</button>
         <Dialog
           title="Add New Restaurant"
