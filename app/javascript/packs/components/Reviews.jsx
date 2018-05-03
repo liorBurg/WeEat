@@ -13,7 +13,7 @@ function ReviewItem(props) {
         <p>{review.comment}</p>
         <span className="reviewer_name">{review['reviewer_name']}</span>
       </div>
-      {props.hr? <hr /> : <div/>}
+      {props.hr ? <hr /> : <div/>}
     </div>
   );
 }

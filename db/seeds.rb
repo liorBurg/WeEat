@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-require 'csv'
 require 'json'
 
+delivery_times_arr = (15..120).step(15).to_a
 file = File.read(Rails.root.join('lib', 'seeds', 'Rests.json'))
 data_hash = JSON.parse(file)
 data_hash['restaurants'].each do |rest|
@@ -17,28 +17,21 @@ data_hash['restaurants'].each do |rest|
   r.name = rest['restaurant']['name']
   r.cuisine = rest['restaurant']['cuisines']
   r.address = rest['restaurant']['location']['address']
+  r.accepts_10bis = Faker::Boolean.boolean
+  r.max_delivery_time = delivery_times_arr.sample
   r.save
 end
 
-# csv_text = File.read(Rails.root.join('lib', 'seeds', 'Restaurants.csv'))
-# csv = CSV.parse(csv_text.scrub, headers: true)
-# csv.each do |row|
-#   t = Restaurant.new
-#   t.name = row[0]
-#   t.accepts_10bis = row['10bis']
-#   t.max_delivery_time = row['maxDT']
-#   t.cuisine = row['Cuisine']
-#   t.address = row['Address']
-#   t.save
-# end
-#
 puts "There are now #{Restaurant.count} rows in the restaurants table"
 
 Restaurant.all.each do |restaurant|
-  rev_count = rand(1..6)
+  rev_count = Faker::Number.between(1, 6)
   rev_count.times do
-    rand_rating = rand(1..3)
-    restaurant.reviews.create(reviewer_name: Faker::Name.name, rating: rand_rating, comment: Faker::Lorem.paragraph)
+    restaurant.reviews.create(
+      reviewer_name: Faker::Name.name,
+      rating: Faker::Number.between(1, 3),
+      comment: Faker::Lorem.paragraph
+    )
   end
 end
 

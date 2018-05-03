@@ -4,11 +4,15 @@ import Rating from './Rating';
 import PropTypes from 'prop-types';
 
 class RestaurantItem extends Component {
+  onRestClick = () => {
+    this.props.updateCurrRestaurantMark(this.props.rest.address);
+  };
+
   render() {
     const restaurant = this.props.rest;
     const cuisines = this.props.cuisines;
     return (
-      <div className="restaurant-item">
+      <div className="restaurant-item" onClick={this.onRestClick}>
         <div className="restaurants-details">
           <div className="cuisine-icon">
             {String.fromCharCode(cuisines[restaurant.cuisine])}
@@ -34,6 +38,7 @@ class RestaurantItem extends Component {
 RestaurantItem.propTypes = {
   rest: PropTypes.object,
   cuisines: PropTypes.object,
+  updateCurrRestaurantMark: PropTypes.func,
 };
 
 export default RestaurantItem;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectField from 'material-ui/SelectField'
+import SelectField from 'material-ui/SelectField';
 import Slider from 'material-ui/Slider';
 import MenuItem from 'material-ui/MenuItem';
 import Checkbox from 'material-ui/Checkbox';
