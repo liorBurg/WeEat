@@ -14,7 +14,7 @@ body {
 }
 
 .banner {
-  background: url("banner_background.jpg") no-repeat center;
+  background: image_url("banner_background.jpg") no-repeat center;
   background-size: cover;
   height: 350px;
   display: flex;
@@ -129,7 +129,7 @@ body {
 }
 
 .ten-bis-icon {
-  background: url("10bis.png") no-repeat center;
+  background: image_url("10bis.png") no-repeat center;
   height: 30px;
   width: 30px;
   margin-left: 20px;
@@ -148,20 +148,20 @@ body {
 }
 
 .red-star {
-  background: url("red-star.png") no-repeat;
+  background: image_url("red-star.png") no-repeat;
   height: 16px;
   width: 16px;
   margin-left: 5px;
 }
 
 .big-red-star {
-  background: url("big-red-star.png") no-repeat;
+  background: image_url("big-red-star.png") no-repeat;
   height: 24px;
   width: 24px;
 }
 
 .star {
-  background: url("star.png") no-repeat;
+  background: image_url("star.png") no-repeat;
   height: 24px;
   width: 24px;
 }
@@ -192,7 +192,7 @@ body {
 
 .reviews-btn {
   border: 0;
-  background: url("review.png") no-repeat;
+  background: image_url("review.png") no-repeat;
   height: 32px;
   width: 32px;
   cursor: pointer;
